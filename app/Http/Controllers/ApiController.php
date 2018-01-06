@@ -123,9 +123,10 @@ class ApiController extends Controller
 
     //表4
     public function addNumberTable4(){
-        if($_GET['name'] && $_GET['pwe'] ){
+        if($_GET['name'] && $_GET['pwe'] && $_GET['youxi']){
             $isset = DB::table('newtable4') -> where([
-                'name' => trim($_GET['name'])
+                'name' => trim($_GET['name']),
+                'youxi' => trim($_GET['youxi']),
             ])->first();
             if($isset){
                 echo 'isset';
@@ -138,6 +139,7 @@ class ApiController extends Controller
                     'beizhu2' => trim($_GET['beizhu2']),
                     'beizhu3' => trim($_GET['beizhu3']),
                     'beizhu4' => trim($_GET['beizhu4']),
+                    'youxi' => trim($_GET['youxi']),
                     'created_at' => time()
                 ]);
                 if($res){
@@ -152,9 +154,10 @@ class ApiController extends Controller
     }
 
     public function deleteNumberTable4(){
-        if($_GET['name']){
+        if($_GET['name'] && $_GET['youxi']){
             $res = DB::table('newtable4') -> where([
-                'name' => $_GET['name']
+                'name' => $_GET['name'],
+                'youxi' => $_GET['youxi'],
             ]) -> delete();
             if($res){
                 echo 'success';
@@ -169,14 +172,16 @@ class ApiController extends Controller
 
     public function updateNumberTable4(){
         //替换：就是，不管存在不存在，直接覆盖。没有就上传，有就替换
-        if($_GET['name']){
+        if($_GET['name'] && $_GET['youxi']){
             $isset = DB::table('newtable4') -> where([
-                'name' => trim($_GET['name'])
+                'name' => trim($_GET['name']),
+                'youxi' => trim($_GET['youxi']),
             ])->first();
             if($isset){
                 //更新
                 $res = DB::table('newtable4') -> where([
                     'name' => trim($_GET['name']),
+                    'youxi' => trim($_GET['youxi']),
                 ])-> update([
                     'pwe' => trim($_GET['pwe']),
                     'wheree' => trim($_GET['wheree']),
@@ -201,6 +206,7 @@ class ApiController extends Controller
                     'beizhu2' => trim($_GET['beizhu2']),
                     'beizhu3' => trim($_GET['beizhu3']),
                     'beizhu4' => trim($_GET['beizhu4']),
+                    'youxi' => trim($_GET['youxi']),
                     'created_at' => time()
                 ]);
                 if($res){
@@ -217,9 +223,10 @@ class ApiController extends Controller
     }
 
     public function getNumberTable4(){
-        if($_GET['name']){
+        if($_GET['name']  && $_GET['youxi']){
             $res = DB::table('newtable4') -> where([
                 'name' => trim($_GET['name']),
+                'youxi' => trim($_GET['youxi']),
             ])->first();
             if($res){
                 echo $res->name.','.$res->pwe.','.$res->wheree.','.$res->beizhu1.','.$res->beizhu2.','.$res->beizhu3.','.$res->beizhu4;
