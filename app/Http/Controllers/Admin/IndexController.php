@@ -25,9 +25,9 @@ class IndexController extends Controller
 
     public function getDataTable2(){
         if($_GET['info']) {
-            $res = DB::table('newtable2')->whereIn('info', $_GET['info'])->get();
+            $res = DB::table('newtable2')->whereIn('info', $_GET['info']) -> orderBy('info2','asc') ->get();
         }else{
-            $res = DB::table('newtable2')->get();
+            $res = DB::table('newtable2')-> orderBy('info2','asc')->get();
         }
         return view('admin/table2') -> with([
             'res' => $res
@@ -36,7 +36,7 @@ class IndexController extends Controller
 
     public function getDataTable3(){
         if($_GET['info']){
-            $res = DB::table('newtable3') -> whereIn('info',$_GET['info']) -> get();
+            $res = DB::table('newtable3') -> whereIn('info',$_GET['info'])  -> get();
         }else{
             $res = DB::table('newtable3')  -> get();
         }
