@@ -322,6 +322,10 @@ class ApiController extends Controller
             echo 'error';
         }
     }
+
+    public function getMyUrl(){
+        echo ($_SERVER['REMOTE_ADDR']);
+    }
 /*
 * * * * * /usr/bin/curl http://feifeifuzhu.com/fuzhu_test/public/api/autoRunTable3
 * * * * * sleep 10; /usr/bin/curl http://feifeifuzhu.com/fuzhu_test/public/api/autoRunTable3

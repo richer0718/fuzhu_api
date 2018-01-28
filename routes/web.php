@@ -53,6 +53,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('/autoRunTable3', 'ApiController@autoRunTable3');
 
     Route::get('/autoTest', 'ApiController@autoTest');
+
+    Route::get('/getMyUrl', 'ApiController@getMyUrl');
 });
 
 
