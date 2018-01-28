@@ -1,6 +1,7 @@
 <html>
 <head></head>
 <body>
+<h1>总数：{{ count($res) }}个</h1>
 <table border="3">
     <tr>
         <td>name</td>
