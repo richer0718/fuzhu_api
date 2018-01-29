@@ -21,6 +21,7 @@ class ApiController extends Controller
                     'name' => trim($_GET['name']),
                     'passwd' => trim($_GET['passwd']),
                     'info' => trim($_GET['info']),
+                    'time' => time()
                 ]);
                 if($res){
                     echo 'success';
