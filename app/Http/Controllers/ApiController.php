@@ -285,7 +285,8 @@ class ApiController extends Controller
                     ])->update([
                         'passwd' => $vo -> passwd,
                         'info' => $vo -> info,
-                        'mark' => NULL
+                        'mark' => NULL,
+                        'time' => time()
                     ]);
                 }else{
                     //插入
@@ -293,6 +294,7 @@ class ApiController extends Controller
                         'name' => $vo -> name,
                         'passwd' => $vo -> passwd,
                         'info' => $vo -> info,
+                        'time' => time()
                     ]);
                 }
 
