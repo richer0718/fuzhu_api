@@ -17,7 +17,7 @@
         <td>{{ $vo -> passwd }}</td>
         <td>{{ $vo -> info }}</td>
         <td>{{ $vo -> info2 }}</td>
-        <td>{{ date('Y-m-d H:i',$vo -> timee) }}</td>
+        <td>{{ date('Y-m-d H:i:s',$vo -> timee) }}</td>
     </tr>
         @endforeach
     @endif
