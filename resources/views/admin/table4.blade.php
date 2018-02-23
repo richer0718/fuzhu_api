@@ -4,6 +4,7 @@
 <h1>总数：{{ count($res) }}个</h1>
 <table border="3">
     <tr>
+        <td>youxi</td>
         <td>name</td>
         <td>pwe</td>
         <td>wheree</td>
@@ -15,6 +16,7 @@
     @if(count($res))
         @foreach($res as $vo)
     <tr>
+        <td>{{ $vo -> youxi }}</td>
         <td>{{ $vo -> name }}</td>
         <td>{{ $vo -> pwe }}</td>
         <td>{{ $vo -> wheree }}</td>
