@@ -233,6 +233,8 @@ class ApiController extends Controller
                 echo $res->name.','.$res->pwe.','.$res->wheree.','.$res->beizhu1.','.$res->beizhu2.','.$res->beizhu3.','.$res->beizhu4;
 
                 //return response() -> json($res);
+            }else{
+                echo 'nodata';
             }
         }else{
             echo 'error';
