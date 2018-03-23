@@ -60,7 +60,7 @@ class ApiController extends Controller
             ]) -> first();
             if($number){
                 $isset = DB::table('newtable2') -> where([
-                    'name' => trim($_GET['name'])
+                    'name' => $number -> name,
                 ]) -> first();
 
                 $isset2 = DB::table('newtable2') -> where([
@@ -74,7 +74,7 @@ class ApiController extends Controller
                         'info2' => trim($_GET['info2'])
                     ]) -> update([
                         'info' => trim($_GET['info']),
-                        'name' => trim($_GET['name']),
+                        'name' => $number -> name,
                         'passwd' => $number -> passwd,
                         'timee' => time()
                     ]);
