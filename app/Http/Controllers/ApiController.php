@@ -60,21 +60,42 @@ class ApiController extends Controller
             ]) -> first();
             if($number){
                 $isset = DB::table('newtable2') -> where([
-                    'name' => trim($_GET['name']),
+                    'name' => trim($_GET['name'])
+                ]) -> first();
+
+                $isset2 = DB::table('newtable2') -> where([
                     'info2' => trim($_GET['info2'])
                 ]) -> first();
+
+                //info2重复，就用新数据，顶替老数据
+                if($isset2){
+                    //更新
+                    $res = DB::table('newtable2') -> where([
+                        'info2' => trim($_GET['info2'])
+                    ]) -> update([
+                        'info' => trim($_GET['info']),
+                        'name' => trim($_GET['name']),
+                        'passwd' => $number -> passwd,
+                        'timee' => time()
+                    ]);
+                }
+
+
+
+
                 if($isset){
                     //更新
                     $res = DB::table('newtable2') -> where([
-                        'name' => trim($_GET['name']),
-                        'info2' => trim($_GET['info2'])
+                        'name' => trim($_GET['name'])
                     ]) -> update([
                         'info' => trim($_GET['info']),
                         'info2' => trim($_GET['info2']),
                         'passwd' => $number -> passwd,
                         'timee' => time()
                     ]);
-                }else{
+                }
+
+                if(!$isset2 && !$isset){
                     //找一个
                     //插入
                     $res = DB::table('newtable2') -> insert([
