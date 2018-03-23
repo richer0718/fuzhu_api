@@ -82,17 +82,22 @@ class ApiController extends Controller
 
 
 
-
+                //name重复，就用删除老的info2，给新的info2用。老的info2记录就删除掉。
                 if($isset){
                     //更新
                     $res = DB::table('newtable2') -> where([
                         'name' => trim($_GET['name'])
-                    ]) -> update([
+                    ]) -> delete();
+
+                    //插入
+                    $res = DB::table('newtable2') -> insert([
                         'info' => trim($_GET['info']),
-                        'info2' => trim($_GET['info2']),
+                        'name' => $number -> name,
                         'passwd' => $number -> passwd,
+                        'info2' => trim($_GET['info2']),
                         'timee' => time()
                     ]);
+
                 }
 
                 if(!$isset2 && !$isset){
@@ -107,16 +112,14 @@ class ApiController extends Controller
                     ]);
                 }
 
-                if($res){
+
                     DB::table('newtable') -> where([
                         'id' => $number -> id
                     ]) -> update([
                         'mark' => 1
                     ]);
                     echo $number->name.','.$number -> passwd;
-                }else{
-                    echo 'error';
-                }
+
             }else{
                 echo 'nouse';
             }
