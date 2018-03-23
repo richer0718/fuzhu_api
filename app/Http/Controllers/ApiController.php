@@ -60,12 +60,14 @@ class ApiController extends Controller
             ]) -> first();
             if($number){
                 $isset = DB::table('newtable2') -> where([
-                    'name' => trim($_GET['name'])
+                    'name' => trim($_GET['name']),
+                    'info2' => trim($_GET['info2'])
                 ]) -> first();
                 if($isset){
                     //更新
                     $res = DB::table('newtable2') -> where([
-                        'name' => trim($_GET['name'])
+                        'name' => trim($_GET['name']),
+                        'info2' => trim($_GET['info2'])
                     ]) -> update([
                         'info' => trim($_GET['info']),
                         'info2' => trim($_GET['info2']),
